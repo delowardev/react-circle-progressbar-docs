@@ -18,6 +18,10 @@ export default function Basic() {
                     emptyColor="#f7f7f7" 
                     thicknessFg="10"
                     thicknessBg="20"
+                    gradient={{
+                        startColor: 'blue',
+                        stopColor: 'green'
+                    }}
                     >
                     </Circle>
             </div>
