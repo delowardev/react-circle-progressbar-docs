@@ -16,8 +16,8 @@ export default function Basic() {
                     isGradient
                     isBgShadow 
                     emptyColor="#f7f7f7" 
-                    thicknessFg="10"
-                    thicknessBg="20"
+                    strokeWidth="10"
+                    strokeWidthBg="20"
                     >
                     </Circle>
             </div>

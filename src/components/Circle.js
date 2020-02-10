@@ -23,20 +23,20 @@ const Circle = props => {
 
     const size = parseInt(props.size);
     const fill = parseInt(props.fill);
-    const thicknessBg = parseInt(props.thicknessBg);
-    const thicknessFg = parseInt(props.thicknessFg);
+    const strokeWidthBg = parseInt(props.strokeWidthBg);
+    const strokeWidth = parseInt(props.strokeWidth);
 
 
-    let circleRadiusBg = (size - thicknessBg) * .5;
-    let circleRadiusFg = (size - thicknessFg) * .5;
+    let circleRadiusBg = (size - strokeWidthBg) * .5;
+    let circleRadiusFg = (size - strokeWidth) * .5;
 
 
-    if (thicknessFg > thicknessBg) {
-        circleRadiusBg -= (thicknessFg - thicknessBg) * .5;
+    if (strokeWidth > strokeWidthBg) {
+        circleRadiusBg -= (strokeWidth - strokeWidthBg) * .5;
     }
 
-    if (thicknessBg > thicknessFg) {
-        circleRadiusFg -= (thicknessBg - thicknessFg) * .5;
+    if (strokeWidthBg > strokeWidth) {
+        circleRadiusFg -= (strokeWidthBg - strokeWidth) * .5;
     }
 
     const circumference = 2 * Math.PI * circleRadiusFg;
@@ -65,7 +65,7 @@ const Circle = props => {
         cy: size,
         r: circleRadiusBg,
         stroke: emptyColor,
-        strokeWidth: thicknessBg,
+        strokeWidth: strokeWidthBg,
         fill: background,
         ...(isBgShadow && { filter: `url(#${uid3})` })
     };
@@ -76,7 +76,7 @@ const Circle = props => {
         cy: size,
         r: circleRadiusFg,
         fill: 'none',
-        strokeWidth: thicknessFg,
+        strokeWidth: strokeWidth,
         strokeDasharray: circumference,
         strokeDashoffset: offset,
         strokeLinecap: linecap,
@@ -199,8 +199,8 @@ const Circle = props => {
 
 Circle.defaultProps = {
     size: 180,
-    thicknessBg: 15,
-    thicknessFg: 15,
+    strokeWidthBg: 15,
+    strokeWidth: 15,
     fillColor: '#288feb',
     emptyColor: '#dddddd',
     background: 'none',
