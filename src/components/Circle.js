@@ -1,7 +1,53 @@
 import React from 'react'
 import uuid from './uuid'
 
+
+
+const defaultProps = {
+    size: 180,
+    strokeWidth: 15,
+    strokeWidthBg: 15,
+    fillColor: '#288feb',
+    emptyColor: '#dddddd',
+    background: 'none',
+    className: '',
+    percent: 55,
+    linecap: 'round',
+    isGradient: false,
+    gradient: {
+        angle: 0,
+        start: 0,
+        end: 100,
+        startColor: '#ff0000',
+        stopColor: '#ffff00',
+    },
+    isShadow: false,
+    shadow: {
+        inset: false,
+        vertical: 10,
+        horizontal: 0,
+        blur: 10,
+        opacity: .5,
+        color: '#000000'
+    },
+    isBgShadow: false,
+    bgShadow: {
+        inset: true,
+        vertical: 3,
+        horizontal: 0,
+        blur: 3,
+        opacity: .4,
+        color: '#000000'
+    }
+}
+
+
 const Circle = props => {
+
+    props = {...defaultProps, ...props}
+    props.shadow = {...props.shadow, ...defaultProps.shadow}
+    props.gradient = {...defaultProps.gradient, ...props.gradient}
+    props.bgShadow = {...defaultProps.bgShadow, ...props.bgShadow}
 
     const uid1 = uuid('grd_');
     const uid2 = uuid('shd_');
@@ -22,7 +68,7 @@ const Circle = props => {
     } = props;
 
     const size = parseInt(props.size);
-    const fill = parseInt(props.fill);
+    const percent = parseInt(props.percent);
     const strokeWidthBg = parseInt(props.strokeWidthBg);
     const strokeWidth = parseInt(props.strokeWidth);
 
@@ -40,7 +86,7 @@ const Circle = props => {
     }
 
     const circumference = 2 * Math.PI * circleRadiusFg;
-    const offset = circumference - (circumference * fill / 100);
+    const offset = circumference - (circumference * percent / 100);
 
     // svg attributes
     const svgAttr = {
@@ -102,7 +148,7 @@ const Circle = props => {
 
     const gradientStopAttr = {
         offset: gradient.end,
-        stopColor: gradient.endColor
+        stopColor: gradient.stopColor
     }
 
     // shadow
@@ -137,6 +183,8 @@ const Circle = props => {
         floodColor: bgShadow.color,
         floodOpacity: bgShadow.opacity
     }
+
+    console.log(props)
 
     return (
         <div {...wrapAttr}>
@@ -195,44 +243,6 @@ const Circle = props => {
             </svg>
         </div>
     )
-}
-
-Circle.defaultProps = {
-    size: 180,
-    strokeWidthBg: 15,
-    strokeWidth: 15,
-    fillColor: '#288feb',
-    emptyColor: '#dddddd',
-    background: 'none',
-    className: '',
-    fill: 55,
-    linecap: 'round',
-    isGradient: false,
-    gradient: {
-        angle: 0,
-        start: 0,
-        end: 100,
-        startColor: 'red',
-        endColor: 'yellow',
-    },
-    isShadow: false,
-    shadow: {
-        inset: false,
-        vertical: 10,
-        horizontal: 0,
-        blur: 10,
-        opacity: .5,
-        color: 'black'
-    },
-    isBgShadow: false,
-    bgShadow: {
-        inset: true,
-        vertical: 3,
-        horizontal: 0,
-        blur: 3,
-        opacity: .4,
-        color: 'black'
-    }
 }
 
 export default Circle

@@ -14,10 +14,11 @@ export default function Basic() {
             <div className="preview-item">
                 <Circle 
                     isGradient
-                    isBgShadow 
+                    isBgShadow  
                     emptyColor="#f7f7f7" 
-                    strokeWidth="10"
-                    strokeWidthBg="20"
+                    strokeWidth="6"
+                    strokeWidthBg="30"
+                    percent={80}
                     >
                     </Circle>
             </div>
