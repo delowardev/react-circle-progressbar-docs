@@ -263,11 +263,31 @@ Circle.propTypes = {
     linecap: PropTypes.string,
     linecap: PropTypes.string,
     isGradient: PropTypes.bool,
-    gradient: PropTypes.object,
+    gradient: PropTypes.shape({
+        angle: PropTypes.number,
+        start: PropTypes.number,
+        end: PropTypes.number,
+        startColor: PropTypes.string,
+        stopColor: PropTypes.string,
+    }),
     isShadow: PropTypes.bool,
-    shadow: PropTypes.object,
+    shadow: PropTypes.shape({
+        inset: PropTypes.bool,
+        vertical: PropTypes.number,
+        horizontal: PropTypes.number,
+        blur: PropTypes.number,
+        opacity: PropTypes.number,
+        color: PropTypes.string
+    }),
     isBgShadow: PropTypes.bool,
-    bgShadow: PropTypes.object,
+    bgShadow: PropTypes.shape({
+        inset: PropTypes.bool,
+        vertical: PropTypes.number,
+        horizontal: PropTypes.number,
+        blur: PropTypes.number,
+        opacity: PropTypes.number,
+        color: PropTypes.string
+    })
 }
 
 export default Circle
