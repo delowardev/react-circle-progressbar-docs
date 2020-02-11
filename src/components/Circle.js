@@ -1,7 +1,14 @@
 import React from 'react'
-import uuid from './uuid'
+import PropTypes from 'prop-types';
 
-
+const uuid = (prefix = '', suffix = '') => {
+    return (
+        prefix + 
+        Math.random().toString(36).substring(2, 8) + 
+        Math.random().toString(36).substring(2, 8) + 
+        suffix
+    )
+};
 
 const defaultProps = {
     size: 180,
@@ -39,11 +46,10 @@ const defaultProps = {
         opacity: .4,
         color: '#000000'
     }
-}
+};
 
 
 const Circle = props => {
-
     props = {...defaultProps, ...props}
     props.shadow = {...props.shadow, ...defaultProps.shadow}
     props.gradient = {...defaultProps.gradient, ...props.gradient}
@@ -243,6 +249,25 @@ const Circle = props => {
             </svg>
         </div>
     )
+}
+
+Circle.propTypes = {
+    size: PropTypes.number,
+    strokeWidth: PropTypes.number,
+    strokeWidthBg: PropTypes.number,
+    fillColor: PropTypes.string,
+    emptyColor: PropTypes.string,
+    background: PropTypes.string,
+    className: PropTypes.string,
+    percent: PropTypes.number,
+    linecap: PropTypes.string,
+    linecap: PropTypes.string,
+    isGradient: PropTypes.bool,
+    gradient: PropTypes.object,
+    isShadow: PropTypes.bool,
+    shadow: PropTypes.object,
+    isBgShadow: PropTypes.bool,
+    bgShadow: PropTypes.object,
 }
 
 export default Circle
