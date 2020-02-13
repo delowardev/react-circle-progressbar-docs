@@ -190,8 +190,6 @@ const Circle = props => {
         floodOpacity: bgShadow.opacity
     }
 
-    console.log(props)
-
     return (
         <div {...wrapAttr}>
             <svg {...svgAttr}>
